@@ -1,8 +1,13 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: black;
 }
 
 a {
   color: #00B7FF;
+}
+canvas{
+  display: block;
+  filter: blur(10px);
 }

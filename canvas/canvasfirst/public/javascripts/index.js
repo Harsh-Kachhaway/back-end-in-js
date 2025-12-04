@@ -17,6 +17,7 @@ window.addEventListener("resize", function () {   //windows resize
 })
 var coloraray = [                                //color palate array 
   "#c7ccd9", "#4a8c8c", "#a68f72", "#bf754b", "#732b1a"  //can add more color
+  // " #74CCF4"
 ]
 var circlearray;                                // declararin of circlearray
 function init() {                                 // init function work each time window resize
