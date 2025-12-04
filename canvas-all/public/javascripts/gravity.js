@@ -77,6 +77,8 @@ function Ball (x, y, radius, color,dy ,dx) {
     console.log(dy);
     y += dy
     x += dx
+    c.globalCompositeOperation = "lighter";
+
     this.draw()
   }
 }

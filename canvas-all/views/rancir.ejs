@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <style>
-    *{
+    * {
       margin: 0;
       padding: 0;
 
       overflow: hidden;
     }
-    canvas{
+
+    canvas {
       border: 1px solid rgb(7, 7, 48);
+        filter: blur(4px) drop-shadow(0 0 10px rgba(255,255,255,0.1)) contrast(100%);
+
     }
   </style>
 </head>
+<!-- use this in css canvas -->
+<!-- filter: blur(4px) contrast(10000%); -->
 <body>
   <canvas></canvas>
-  
+
 </body>
 <script src="/javascripts/rancir.js"></script>
+
 </html>

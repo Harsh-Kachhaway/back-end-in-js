@@ -53,6 +53,7 @@ function init() {                                 // init function work each tim
       else if (radius > 1) {
         radius -= 1
       }
+
       this.draw();
     };
   }

@@ -96,8 +96,28 @@ function distance(x1, y1, x2, y2) {
 
   return Math.sqrt(Math.pow(xDist, 2) + Math.pow(yDist, 2));
 }
-const colors = ["#00b8ff", "#001eff", "#bd00ff"];
+// const colors = ["#00b8ff", "#001eff", "#bd00ff"];
 // const colors = ["#2185C5", "#7ECEFD", "#FFF6E5", "#FF7F66", "#c7ccd9", "#4a8c8c", "#a68f72", "#bf754b", "#732b1a"]
+// const colors = [
+//   "#6a00f4",
+//   "#9d4edd",
+//   "#c77dff",
+//   "#7b2cbf",
+//   "#4895ef",
+//   "#4cc9f0",
+//   "#f4d35e",
+//   "#f95738",
+// ];
+const colors = [
+  "#00b8ff",
+  "#001eff",
+  "#bd00ff",
+  "#ff00c8",
+  "#ff0088",
+  "#ff3b3b",
+  "#ff8c00",
+  "#f7ff00"
+];
 
 // Event Listeners
 addEventListener("mousemove", (event) => {
@@ -108,6 +128,9 @@ addEventListener("mousemove", (event) => {
 addEventListener("resize", () => {
   canvas.width = innerWidth;
   canvas.height = innerHeight;
+
+  c.fillStyle = "black";
+  c.fillRect(0, 0, canvas.width, canvas.height);
 
   init();
 });
@@ -157,7 +180,7 @@ function Circletwo(x, y, radius, color) {
   };
 }
 // Objects
-function Circle(x, y, radius, color, min, max, dx , dy) {
+function Circle(x, y, radius, color, min, max, dx, dy) {
   this.x = x;
   this.y = y;
   this.radius = Math.random() * 5 + 1;
@@ -194,11 +217,13 @@ function Circle(x, y, radius, color, min, max, dx , dy) {
       x: this.x,
       y: this.y,
     };
-    this.lastmouse.x += this.velocitymove.x * 0.05;
-    this.lastmouse.y += this.velocitymove.y * 0.05;
+    this.lastmouse.x += (mouse.x - this.lastmouse.x) * 0.02;
+    this.lastmouse.y += (mouse.y - this.lastmouse.y) * 0.02;
+
     this.radian += this.velocity;
-    this.x = ((innerWidth / 2)+ this.velocitymove.x + Math.sin(this.radian) * this.dis);
-    this.y = ((innerHeight / 2) + this.velocitymove.y + Math.cos(this.radian) * this.dis);
+    this.x = this.lastmouse.x + Math.sin(this.radian) * this.dis;
+    this.y = this.lastmouse.y + Math.cos(this.radian) * this.dis;
+
     if (this.x > innerWidth - this.dis || this.x < 0 + this.dis) {
       this.dx = -this.dx;
     }
@@ -207,7 +232,7 @@ function Circle(x, y, radius, color, min, max, dx , dy) {
     }
     this.velocitymove.y += this.dy;
     this.velocitymove.x += this.dx;
-   
+
     this.draw(lastpos);
   };
 }
@@ -229,11 +254,12 @@ function init() {
         randomColor(colors),
         100,
         120,
-        1,1
+        1,
+        1
       )
     );
   }
-  for (let i = 0; i < 200; i++) {
+  for (let i = 0; i < 1000; i++) {
     particlestwo.push(
       new Circle(
         innerWidth / 2,
@@ -242,7 +268,8 @@ function init() {
         randomColor(colors),
         150,
         180,
-        1,1
+        1,
+        1
       )
     );
   }
@@ -262,7 +289,7 @@ function init() {
 function animate() {
   requestAnimationFrame(animate);
   //   c.clearRect(0, 0, canvas.width, canvas.height)
-  c.fillStyle = "rgba(255,255,255,0.09)";
+  c.fillStyle = "rgba(0, 0, 0, 0.01)";
   c.fillRect(0, 0, innerWidth, innerHeight);
 
   particles.forEach((Circle) => {
@@ -272,7 +299,7 @@ function animate() {
     Circle.update();
   });
   circlearray.forEach((Circletwo) => {
-    Circletwo.update(circlearray);
+    // Circletwo.update(circlearray);
     // console.log(circlearray);
   });
 }
